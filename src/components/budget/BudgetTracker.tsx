@@ -8,44 +8,44 @@ import { PieChart, Edit3, Plus, AlertTriangle, CheckCircle, TrendingUp } from "l
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Label } from "../ui/label";
 
-// Mock budget data
+// Mock budget data (converted to INR)
 const mockBudgets = [
   { 
     id: 1, 
     category: "Food & Dining", 
-    allocated: 500, 
-    spent: 423.80, 
+    allocated: 41500, 
+    spent: 35175, 
     color: "hsl(var(--warning))",
     lastUpdated: "2024-01-15"
   },
   { 
     id: 2, 
     category: "Transportation", 
-    allocated: 200, 
-    spent: 156.30, 
+    allocated: 16600, 
+    spent: 12973, 
     color: "hsl(var(--primary))",
     lastUpdated: "2024-01-14"
   },
   { 
     id: 3, 
     category: "Entertainment", 
-    allocated: 300, 
-    spent: 234.90, 
+    allocated: 24900, 
+    spent: 19497, 
     color: "hsl(var(--success))",
     lastUpdated: "2024-01-13"
   },
   { 
     id: 4, 
     category: "Shopping", 
-    allocated: 400, 
-    spent: 432.50, 
+    allocated: 33200, 
+    spent: 35898, 
     color: "hsl(var(--expense))",
     lastUpdated: "2024-01-12"
   },
   { 
     id: 5, 
     category: "Education", 
-    allocated: 300, 
+    allocated: 24900, 
     spent: 0, 
     color: "hsl(var(--secondary))",
     lastUpdated: "2024-01-01"
@@ -120,16 +120,16 @@ export const BudgetTracker = () => {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-2xl font-bold">${totalAllocated}</div>
+              <div className="text-2xl font-bold">₹{totalAllocated.toLocaleString('en-IN')}</div>
               <p className="text-sm text-muted-foreground">Total Budget</p>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-expense">${totalSpent.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-expense">₹{totalSpent.toLocaleString('en-IN')}</div>
               <p className="text-sm text-muted-foreground">Total Spent</p>
             </div>
             <div className="text-center">
               <div className={`text-2xl font-bold ${totalSpent > totalAllocated ? 'text-expense' : 'text-success'}`}>
-                ${Math.abs(totalAllocated - totalSpent).toFixed(2)}
+                ₹{Math.abs(totalAllocated - totalSpent).toLocaleString('en-IN')}
               </div>
               <p className="text-sm text-muted-foreground">
                 {totalSpent > totalAllocated ? 'Over Budget' : 'Remaining'}
@@ -170,10 +170,10 @@ export const BudgetTracker = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-2xl font-bold text-expense">
-                        ${budget.spent.toFixed(2)}
+                        ₹{budget.spent.toLocaleString('en-IN')}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        of ${budget.allocated} allocated
+                        of ₹{budget.allocated.toLocaleString('en-IN')} allocated
                       </div>
                     </div>
                     <Badge 
@@ -191,7 +191,7 @@ export const BudgetTracker = () => {
                       Last updated: {new Date(budget.lastUpdated).toLocaleDateString()}
                     </span>
                     <span className={`font-medium text-${color}`}>
-                      ${Math.abs(budget.allocated - budget.spent).toFixed(2)} 
+                      ₹{Math.abs(budget.allocated - budget.spent).toLocaleString('en-IN')} 
                       {budget.spent > budget.allocated ? ' over' : ' left'}
                     </span>
                   </div>
@@ -239,7 +239,7 @@ export const BudgetTracker = () => {
                 <div>
                   <h4 className="font-medium text-primary">Optimization Tip</h4>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Based on your spending pattern, you could save $50 by meal prepping instead of dining out.
+                    Based on your spending pattern, you could save ₹4,150 by meal prepping instead of dining out.
                   </p>
                 </div>
               </div>

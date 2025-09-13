@@ -4,19 +4,19 @@ import { Progress } from "../ui/progress";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Badge } from "../ui/badge";
-import { Target, Plus, Edit3, Calendar, DollarSign, TrendingUp, CheckCircle } from "lucide-react";
+import { Target, Plus, Edit3, Calendar, IndianRupee, TrendingUp, CheckCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
-// Mock goals data
+// Mock goals data (converted to INR)
 const mockGoals = [
   {
     id: 1,
     name: "Emergency Fund",
     description: "Build a safety net for unexpected expenses",
-    target: 1000,
-    current: 450,
+    target: 83000,
+    current: 37350,
     deadline: "2024-06-01",
     category: "Savings",
     priority: "high",
@@ -26,8 +26,8 @@ const mockGoals = [
     id: 2,
     name: "New Laptop",
     description: "Save for a new laptop for studies",
-    target: 1200,
-    current: 320,
+    target: 99600,
+    current: 26560,
     deadline: "2024-08-15",
     category: "Purchase",
     priority: "medium",
@@ -37,8 +37,8 @@ const mockGoals = [
     id: 3,
     name: "Summer Trip",
     description: "Vacation fund for summer break",
-    target: 800,
-    current: 180,
+    target: 66400,
+    current: 14940,
     deadline: "2024-05-01",
     category: "Travel",
     priority: "low",
@@ -48,8 +48,8 @@ const mockGoals = [
     id: 4,
     name: "Textbooks Fund",
     description: "Next semester textbooks",
-    target: 300,
-    current: 300,
+    target: 24900,
+    current: 24900,
     deadline: "2024-08-01",
     category: "Education",
     priority: "high",
@@ -114,10 +114,10 @@ export const GoalTracker = () => {
         <Card className="bg-gradient-card shadow-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Saved</CardTitle>
-            <DollarSign className="h-4 w-4 text-success" />
+            <IndianRupee className="h-4 w-4 text-success" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-success">${totalSaved}</div>
+            <div className="text-2xl font-bold text-success">₹{totalSaved.toLocaleString('en-IN')}</div>
             <p className="text-xs text-muted-foreground">Across all goals</p>
           </CardContent>
         </Card>
@@ -128,7 +128,7 @@ export const GoalTracker = () => {
             <TrendingUp className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${totalGoalValue}</div>
+            <div className="text-2xl font-bold">₹{totalGoalValue.toLocaleString('en-IN')}</div>
             <p className="text-xs text-muted-foreground">Total target</p>
           </CardContent>
         </Card>
@@ -242,10 +242,10 @@ export const GoalTracker = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-2xl font-bold text-success">
-                        ${goal.current.toFixed(2)}
+                        ₹{goal.current.toLocaleString('en-IN')}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        of ${goal.target} target
+                        of ₹{goal.target.toLocaleString('en-IN')} target
                       </div>
                     </div>
                     <Badge 
@@ -272,7 +272,7 @@ export const GoalTracker = () => {
                     <div className="p-3 bg-muted/20 rounded-lg">
                       <div className="text-sm font-medium mb-1">Monthly Progress Needed</div>
                       <div className="text-sm text-muted-foreground">
-                        Save ${((goal.target - goal.current) / Math.max(1, Math.ceil(daysUntilDeadline / 30))).toFixed(2)} per month to reach your goal
+                        Save ₹{((goal.target - goal.current) / Math.max(1, Math.ceil(daysUntilDeadline / 30))).toLocaleString('en-IN')} per month to reach your goal
                       </div>
                     </div>
                   )}

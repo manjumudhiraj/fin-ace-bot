@@ -162,7 +162,11 @@
 
   body {
     @apply bg-background text-foreground;
-    background: var(--gradient-dashboard);
+    background: var(--gradient-dashboard), url('/src/assets/student-budget-bg.jpg');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-attachment: fixed, fixed;
+    background-repeat: no-repeat, no-repeat;
     min-height: 100vh;
   }
 }

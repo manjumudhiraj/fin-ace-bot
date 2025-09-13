@@ -1,13 +1,13 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const mockTrendData = [
-  { day: "Mon", amount: 45.50 },
-  { day: "Tue", amount: 28.30 },
-  { day: "Wed", amount: 67.80 },
-  { day: "Thu", amount: 34.20 },
-  { day: "Fri", amount: 89.40 },
-  { day: "Sat", amount: 156.30 },
-  { day: "Sun", amount: 23.10 },
+  { day: "Mon", amount: 3777 },
+  { day: "Tue", amount: 2349 },
+  { day: "Wed", amount: 5627 },
+  { day: "Thu", amount: 2839 },
+  { day: "Fri", amount: 7420 },
+  { day: "Sat", amount: 12973 },
+  { day: "Sun", amount: 1917 },
 ];
 
 export const SpendingTrends = () => {
@@ -16,7 +16,7 @@ export const SpendingTrends = () => {
       return (
         <div className="bg-card p-3 rounded-lg shadow-elevated border">
           <p className="font-medium">{label}</p>
-          <p className="text-expense">${payload[0].value.toFixed(2)}</p>
+          <p className="text-expense">₹{payload[0].value.toLocaleString('en-IN')}</p>
         </div>
       );
     }
@@ -36,7 +36,7 @@ export const SpendingTrends = () => {
           <YAxis 
             stroke="hsl(var(--muted-foreground))"
             fontSize={12}
-            tickFormatter={(value) => `$${value}`}
+            tickFormatter={(value) => `₹${value.toLocaleString('en-IN')}`}
           />
           <Tooltip content={<CustomTooltip />} />
           <Line 

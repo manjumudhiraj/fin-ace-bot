@@ -6,16 +6,16 @@ import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Search, Filter, Calendar, DollarSign } from "lucide-react";
 
-// Mock expense data
+// Mock expense data (converted to INR)
 const mockExpenses = [
-  { id: 1, description: "Starbucks Coffee", amount: 4.95, category: "Food & Dining", date: "2024-01-15", type: "expense" },
-  { id: 2, description: "Bus Pass Monthly", amount: 85.00, category: "Transportation", date: "2024-01-14", type: "expense" },
-  { id: 3, description: "Netflix Subscription", amount: 15.99, category: "Entertainment", date: "2024-01-13", type: "subscription" },
-  { id: 4, description: "Grocery Shopping", amount: 67.45, category: "Food & Dining", date: "2024-01-12", type: "expense" },
-  { id: 5, description: "Uber Ride", amount: 12.30, category: "Transportation", date: "2024-01-11", type: "expense" },
-  { id: 6, description: "Amazon Prime", amount: 8.99, category: "Shopping", date: "2024-01-10", type: "subscription" },
-  { id: 7, description: "Pizza Delivery", amount: 23.50, category: "Food & Dining", date: "2024-01-09", type: "expense" },
-  { id: 8, description: "Movie Tickets", amount: 15.00, category: "Entertainment", date: "2024-01-08", type: "expense" },
+  { id: 1, description: "Starbucks Coffee", amount: 411, category: "Food & Dining", date: "2024-01-15", type: "expense" },
+  { id: 2, description: "Bus Pass Monthly", amount: 7055, category: "Transportation", date: "2024-01-14", type: "expense" },
+  { id: 3, description: "Netflix Subscription", amount: 1327, category: "Entertainment", date: "2024-01-13", type: "subscription" },
+  { id: 4, description: "Grocery Shopping", amount: 5599, category: "Food & Dining", date: "2024-01-12", type: "expense" },
+  { id: 5, description: "Uber Ride", amount: 1021, category: "Transportation", date: "2024-01-11", type: "expense" },
+  { id: 6, description: "Amazon Prime", amount: 746, category: "Shopping", date: "2024-01-10", type: "subscription" },
+  { id: 7, description: "Pizza Delivery", amount: 1951, category: "Food & Dining", date: "2024-01-09", type: "expense" },
+  { id: 8, description: "Movie Tickets", amount: 1245, category: "Entertainment", date: "2024-01-08", type: "expense" },
 ];
 
 const categories = ["All", "Food & Dining", "Transportation", "Entertainment", "Shopping", "Education"];
@@ -98,13 +98,13 @@ export const ExpenseList = () => {
             </Select>
           </div>
           
-          <div className="mt-4 flex items-center justify-between">
+            <div className="mt-4 flex items-center justify-between">
             <p className="text-sm text-muted-foreground">
               Showing {filteredExpenses.length} expenses
             </p>
             <div className="text-right">
               <p className="text-sm text-muted-foreground">Total</p>
-              <p className="text-xl font-bold text-expense">${totalExpenses.toFixed(2)}</p>
+              <p className="text-xl font-bold text-expense">₹{totalExpenses.toLocaleString('en-IN')}</p>
             </div>
           </div>
         </CardContent>
@@ -139,7 +139,7 @@ export const ExpenseList = () => {
                   </div>
                   <div className="text-right">
                     <div className="text-lg font-bold text-expense">
-                      ${expense.amount.toFixed(2)}
+                      ₹{expense.amount.toLocaleString('en-IN')}
                     </div>
                   </div>
                 </div>

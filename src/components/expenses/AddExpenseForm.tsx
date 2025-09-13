@@ -6,7 +6,7 @@ import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Badge } from "../ui/badge";
-import { X, DollarSign, Calendar, Tag, FileText, Sparkles } from "lucide-react";
+import { X, IndianRupee, Calendar, Tag, FileText, Sparkles } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 
 interface AddExpenseFormProps {
@@ -90,7 +90,7 @@ export const AddExpenseForm = ({ onClose }: AddExpenseFormProps) => {
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <DollarSign className="w-5 h-5" />
+            <IndianRupee className="w-5 h-5" />
             Add New Expense
           </DialogTitle>
         </DialogHeader>
@@ -127,12 +127,12 @@ export const AddExpenseForm = ({ onClose }: AddExpenseFormProps) => {
           <div className="space-y-2">
             <Label htmlFor="amount">Amount</Label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <IndianRupee className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 id="amount"
                 type="number"
-                step="0.01"
-                placeholder="0.00"
+                step="1"
+                placeholder="0"
                 className="pl-10"
                 value={formData.amount}
                 onChange={(e) => setFormData(prev => ({ ...prev, amount: e.target.value }))}

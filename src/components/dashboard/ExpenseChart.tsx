@@ -24,7 +24,7 @@ export const ExpenseChart = ({ data }: ExpenseChartProps) => {
       return (
         <div className="bg-card p-3 rounded-lg shadow-elevated border">
           <p className="font-medium">{data.payload.name}</p>
-          <p className="text-expense">${data.value.toFixed(2)}</p>
+          <p className="text-expense">₹{data.value.toLocaleString('en-IN')}</p>
         </div>
       );
     }
